@@ -34,4 +34,38 @@ func main() {
 
 	//输出字符串中指定字符
 	fmt.Printf("str3[0] = %c , str3[1] = %c \n", str3[0], str3[1])
+
+	//使用反引号“ ` ”可以保持文本格式不变，转义字符不会被转义，会原封不动的打印出来
+	str4 := `字符串和字符区别
+		字符 \n \t\r
+		单引号
+		字符元素往往只有一个字符，转义字符除外
+		字符串：
+		1.双引号
+		2.字符串有一个或多个字符组成
+		3.字符串都是隐藏了一个结束符‘\0’`
+	fmt.Println(str4)
+
+	str5 := "hello go"
+	fmt.Println(reverse(str5))
+	fmt.Println(reverse1(str5))
+}
+
+func reverse(str string) string {
+	var result string
+	strlen := len(str)
+	for i := 0; i < strlen; i++ {
+		result = result + fmt.Sprintf("%c", str[strlen-i-1])
+	}
+	return result
+}
+
+func reverse1(str string) string {
+	var result []byte
+	tmp := []byte(str)
+	length := len(str)
+	for i := 0; i < length; i++ {
+		result = append(result, tmp[length-i-1])
+	}
+	return string(result)
 }
