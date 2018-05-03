@@ -25,4 +25,36 @@ func main() {
 
 	student.SetInfo("张三", 18)
 
+	sum := add(10, 20, 30, 40)
+	fmt.Println(sum)
+	str := addString("ab", "cd", "add")
+	fmt.Println(str)
 }
+
+/*
+注意：其中arg是一个slice，我们可以通过arg[index]依次访问所有参数，
+通过len(arg)来判断传递参数的个数
+*/
+//0个或多个参数
+//func add(arg ...int) {}
+
+//1个或多个参数
+func add(a int, arg ...int) int {
+	var sum int = a
+	for i := 0; i < len(arg); i++ {
+		sum += arg[i]
+	}
+	return sum
+}
+
+//1个或多个参数
+func addString(a string, arg ...string) string {
+	var result string = a
+	for i := 0; i < len(arg); i++ {
+		result += arg[i]
+	}
+	return result
+}
+
+//2个或多个参数
+//func add(a int, b int, arg ...int) {}
