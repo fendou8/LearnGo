@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -49,6 +50,11 @@ func main() {
 	str5 := "hello go"
 	fmt.Println(reverse(str5))
 	fmt.Println(reverse1(str5))
+
+	/*判断字符串开头结尾*/
+	fmt.Println(urlProcess("www.baidu.com"))
+	fmt.Println(pathProcess("D:"))
+
 }
 
 func reverse(str string) string {
@@ -68,4 +74,22 @@ func reverse1(str string) string {
 		result = append(result, tmp[length-i-1])
 	}
 	return string(result)
+}
+
+//判断是否有http://头
+func urlProcess(url string) string {
+	result := strings.HasPrefix(url, "http://")
+	if !result {
+		url = fmt.Sprintf("http://%s", url)
+	}
+	return url
+}
+
+//判断是否以斜杠/结尾
+func pathProcess(path string) string {
+	result := strings.HasSuffix(path, "/")
+	if !result {
+		path = fmt.Sprintf("%s/", path)
+	}
+	return path
 }
